@@ -1,22 +1,40 @@
 {
-  "name": "Member-Manage-App",
+  "name": "Member_Manage_App",
   "version": "1.0.0",
   "description": "Member manage app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": " npm install -perfix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
+    "from": "^0.1.7",
+    "import": "0.0.6",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.13"
+    "kill-port": "^1.6.1",
+    "materialize-css": "^1.0.0",
+    "mongoose": "^6.0.13",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.2.1",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.0",
+    "uuidv4": "^6.2.12",
+    "web-vitals": "^1.1.2"
   },
   "devDependencies": {
     "concurrently": "^6.4.0",

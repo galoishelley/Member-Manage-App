@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+}
+
+/* 
+.baby-names{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 85% importent !;
+  }
+}
+
+.content {
+  margin: 100px 0px;
+}
+
+
+nav .nav-wrapper {
+  background-color: #5770fa;
+  padding: 0 20px;
+}
+
+.content form {
+  position: relative;
+}
+
+.content form i {
+  position: absolute;
+  right: 3px;
+  top: 20px;
+}
+
+/* .content table {
+  margin-top: 20px;
+} */
+
+.about {
+  /* text-align: center; */
+}
+
+
+.form-container {
+  width: 50%;
+  margin: 0 auto;
+}

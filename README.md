@@ -9,3 +9,6 @@ Npm i -D nodemon concurrently
 git init
 git add .
 git commit -m 'express set up with inital routes'
+
+## https://express-validator.github.io/docs/
+

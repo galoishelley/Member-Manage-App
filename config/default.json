@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://root:root@cluster0.tlfap.mongodb.net/memberdb?retryWrites=true&w=majority",
+    "jwtSecret": "member"
+}
