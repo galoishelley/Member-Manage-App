@@ -1,4 +1,4 @@
-import react, { useEffect, Fragment } from 'react';
+import { useEffect, Fragment } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -13,13 +13,15 @@ import EditMemberModal from './components/members/EditMemberModal.js';
 
 
 import MbReward from './components/mbreward/MbReward.js';
+import AddMbRewardModal from './components/mbreward/AddMbRewardModal.js';
+import EditMbRewardModal from './components/mbreward/EditMbRewardModal.js';
 
 import Rewards from './components/rewards/Rewards.js';
 import AddRewardModal from './components/rewards/AddRewardModal.js';
 import EditRewardModal from './components/rewards/EditRewardModal.js';
 
-import About from './components/pages/About.js';
 import Home from './components/pages/Home.js';
+import About from './components/pages/About.js';
 import Login from './components/auth/Login.js';
 import Alerts from './components/layout/Alerts.js';
 
@@ -39,6 +41,9 @@ function App() {
   useEffect(() => {
     //Init Materialize JS
     M.AutoInit();
+
+    //
+    // M.material_select();
   }
   )
 
@@ -50,21 +55,24 @@ function App() {
 
           <div className="container">
             <Alerts />
+
+            <AddMbRewardModal />
+            <EditMbRewardModal />
+
             <AddMemberModal />
             <EditMemberModal />
 
             <AddRewardModal />
             <EditRewardModal />
+
             <Switch>
 
               <PrivateRoute exact path='/' component={Home} />
-              <Route exact path='/member' component={Members} />
-              <Route exact path='/reward' component={Rewards} />
-              <Route exact path='/about' component={About} />
+              <PrivateRoute exact path='/member' component={Members} />
+              <PrivateRoute exact path='/reward' component={Rewards} />
+              <PrivateRoute exact path='/about' component={About} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/mbreward' component={MbReward} />
-
-
             </Switch>
           </div>
         </Fragment>

@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { filterRewards, clearFilter } from '../../actions/rewardAction.js';
+import { filterRewards, clearFilter } from '../../actions/mbrewardAction.js';
 
 
-const RewardFilter = ({ filterRewards, clearFilter, filtered }) => {
+const MbRewardFilter = ({ filterRewards, clearFilter, filtered }) => {
 
     const text = useRef('');
 
@@ -25,12 +25,12 @@ const RewardFilter = ({ filterRewards, clearFilter, filtered }) => {
 
     return (
         <form>
-            <input ref={text} type="text" placeholder="Filter rewards..." onChange={onChange} /><i className="material-icons grey-text">search</i>
+            <input ref={text} type="text" placeholder="Filter member's reward..." onChange={onChange} /><i className="material-icons grey-text">search</i>
         </form>
     )
 }
 
-RewardFilter.prototype = {
+MbRewardFilter.prototype = {
     filterRewards: PropTypes.func.isRequired,
     clearFilter: PropTypes.func.isRequired,
 }
@@ -40,4 +40,4 @@ const mapStateToProps = state => ({
     filtered: state.reward.filtered
 });
 
-export default connect(mapStateToProps, { filterRewards, clearFilter })(RewardFilter);
+export default connect(mapStateToProps, { filterRewards, clearFilter })(MbRewardFilter);

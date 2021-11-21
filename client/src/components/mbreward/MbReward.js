@@ -1,49 +1,62 @@
-import React from 'react'
-import RewardFilter from './MbRewardFilter.js';
-import RewardItem from './MbRewardItem.js';
+import React, { useEffect } from 'react'
+import MbRewardFilter from './MbRewardFilter.js';
+import MbRewardItem from './MbRewardItem.js';
 import { connect } from 'react-redux';
+import { getMBHasReward } from '../../actions/mbrewardAction.js';
+import { getMbMembers_aggregate } from '../../actions/mbrewardAction.js';
 
-const MbReward = ({ reward: { rewards, loading, filtered } }) => {
 
-    console.log(rewards);
+const MbReward = ({ member: { members }, mbreward: { mbrewards, loading, filtered }, getMBHasReward, getMbMembers_aggregate }) => {
+
+    useEffect(() => {
+        // getMBHasReward();
+        //has reward members
+        getMbMembers_aggregate();
+    }, [members]);
+
     return (
         <div className="content">
-            <RewardFilter />
+            <h1>Member's reward</h1>
+            <MbRewardFilter />
 
             <table className="striped highlight centered responsive-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Member Name</th>
+                        <th>Reward Name</th>
                         <th>Operate</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {!loading && rewards !== null &&
+                    {!loading && mbrewards !== null &&
                         filtered !== null
                         ?
-                        filtered.map(reward => (
-                            <RewardItem reward={reward} key={reward._id} />
+                        filtered.map(item => (
+                            <MbRewardItem mbreward={item} key={item._id} />
                         ))
 
-                        : rewards.map(reward => (
-                            <RewardItem reward={reward} key={reward._id} />
+                        : mbrewards.map(item => (
+                            <MbRewardItem mbreward={item} key={item._id} />
                         ))
                     }
                 </tbody>
 
             </table>
+
             <div className="fixed-action-btn">
                 <a href="#add-mbreward-modal" className="btn-floating btn-large blue darken-2 modal-trigger">
                     <i className="large material-icons">add</i>
                 </a>
             </div>
+
         </div>
     )
 }
 
 const mapStateToProps = state => ({
-    reward: state.reward
+    mbreward: state.mbreward,
+    member: state.member
 });
 
-export default connect(mapStateToProps, null)(MbReward);
+export default connect(mapStateToProps, { getMBHasReward, getMbMembers_aggregate })(MbReward);

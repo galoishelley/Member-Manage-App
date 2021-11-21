@@ -76,7 +76,7 @@ const EditMemberModal = ({ current, updateMember }) => {
 
 const modalStyle = {
     width: '50%',
-    height: '75%'
+    height: '40%'
 
 }
 

@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult, check } = require('express-validator');
 const auth = require('../middleware/auth');
-
+var mongoose = require('mongoose');
+// var id = mongoose.Types.ObjectId('61972d607dafdab24fa5bd11');
+// const mongoose = require('mongoose');
+// var Schema = mongoose.Schema;
 
 const Member = require('../models/Member');
 
@@ -20,6 +23,7 @@ router.get('/', auth,
             res.status(500).send("Server Error");
         }
     });
+
 
 //@route POST api/members
 //@desc add a new members
@@ -64,7 +68,14 @@ router.post('/', [
 //@access Private
 router.put('/:id', auth,
     async (req, res) => {
-        const { name, email, phone } = req.body;
+        const { name, email, phone, reward_id } = req.body;
+
+        let id;
+        if (reward_id !== null) {
+            id = mongoose.Types.ObjectId(reward_id);
+        } else {
+            id = null;
+        }
 
         //Build Member object
         const memberFields = {};
@@ -72,7 +83,7 @@ router.put('/:id', auth,
         if (name) memberFields.name = name;
         if (email) memberFields.email = email;
         if (phone) memberFields.phone = phone;
-        console.log(memberFields);
+        memberFields.reward_id = id;
 
         try {
             let member = await Member.findById(req.params.id);

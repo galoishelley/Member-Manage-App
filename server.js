@@ -18,10 +18,11 @@ app.get('/', (req, res) =>
 // //Define Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
-
 app.use('/api/members', require('./routes/members'));
 app.use('/api/rewards', require('./routes/rewards'));
-app.use('/api/mbreward', require('./routes/mbreward'));
+app.use('/api/aggregate', require('./routes/aggregate'));
+app.use('/api/memb_null', require('./routes/memb_null'));
+
 
 const PORT = process.env.PORT || 5000;
 

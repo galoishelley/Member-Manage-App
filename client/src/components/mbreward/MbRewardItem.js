@@ -1,21 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteReward, setCurrent } from '../../actions/rewardAction.js';
+import { setCurrent } from '../../actions/mbrewardAction.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import PropTypes from 'prop-types';
+import { addMbReward } from '../../actions/mbrewardAction.js';
 
-const RewardItem = ({ reward, deleteReward, setCurrent }) => {
+const MbRewardItem = ({ mbreward, addMbReward, setCurrent }) => {
+
 
     const onDelete = () => {
-        deleteReward(reward._id);
-        M.toast({ html: 'Reward deleted' });
+
+        const neMbReward = {
+            _id: mbreward._id,
+            reward_id: null
+        }
+
+        addMbReward(neMbReward);
+
+        M.toast({ html: 'MbReward deleted' });
     }
 
     return (
         <tr>
-            <td>{reward.name}</td>
+            <td>{mbreward.name}</td>
+            <td>{mbreward.reward_info !== null && mbreward.reward_info !== undefined && mbreward.reward_info[0].name}</td>
             <td>
-                <a href="#edit-reward-modal" className='modal-trigger' onClick={() => setCurrent(reward)}>
+                <a href="#edit-mbreward-modal" className='modal-trigger' onClick={() => setCurrent(mbreward)}>
                     <i className="material-icons grey-text">edit</i>
                 </a>
                 <a href="#!" onClick={onDelete}>
@@ -28,10 +38,10 @@ const RewardItem = ({ reward, deleteReward, setCurrent }) => {
     )
 }
 
-RewardItem.propTypes = {
-    reward: PropTypes.object.isRequired,
-    deleteReward: PropTypes.func.isRequired
+MbRewardItem.propTypes = {
+    // reward: PropTypes.object.isRequired,
+    addMbReward: PropTypes.func.isRequired
 }
 
 
-export default connect(null, { deleteReward, setCurrent })(RewardItem);
+export default connect(null, { addMbReward, setCurrent })(MbRewardItem);

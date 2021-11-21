@@ -43,24 +43,22 @@ const rewardReducer = (state = initialState, action) => {
                 ...state,
                 current: action.payload
             }
-        // case CLEAR_CURRENT:
-        //     return{
-        //         ...state,
-        //         current: null
-        //     }
+        case CLEAR_CURRENT:
+            return {
+                ...state,
+                current: null
+            }
         case SET_LOADING:
             return {
                 ...state,
                 loading: true
             };
         case REWARD_ERROR:
-            console.log(action.payload);
             return {
                 ...state,
                 error: action.payload
             };
         case FILTER_REWARDS:
-            console.log(action.payload)
             return {
                 ...state,
                 filtered: state.rewards.filter(reward => {

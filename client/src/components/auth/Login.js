@@ -15,7 +15,6 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, setAlert 
             history.push("/");
         }
 
-        console.log(error);
         if (error === 'Invalid Credentials') {
             setAlert(error, 'danger');
             clearErrors();
@@ -26,8 +25,8 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, setAlert 
 
 
     const [user, setUser] = useState({
-        email: '',
-        password: ''
+        email: 'gracemiao2017@gmail.com',
+        password: '123456'
     });
 
     const { email, password } = user;

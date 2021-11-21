@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const MemberSchema = Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        ref: 'mbreward'
-    },
+const MemberSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -18,8 +14,14 @@ const MemberSchema = Schema({
         type: String,
         required: true,
         unique: true
-    }
-});
+    },
+    reward_id: {
+        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "rewards",
+        default: null
 
-var Member = mongoose.model('member', MemberSchema);
-module.exports = Member;
+    }
+}, { collection: 'members' });
+
+const Member = module.exports = mongoose.model('member', MemberSchema);

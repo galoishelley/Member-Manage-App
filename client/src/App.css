@@ -28,9 +28,9 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
   color: #666;
-}
+} */
 
 ul {
   list-style: none;
@@ -478,4 +478,8 @@ nav .nav-wrapper {
   position: absolute;
   right: 3px;
   top: 20px;
+}
+
+table.highlight>tbody>tr:hover {
+  background-color: #bebfc0 !important;
 }
