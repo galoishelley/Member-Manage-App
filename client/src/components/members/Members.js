@@ -12,6 +12,7 @@ const Members = ({ member: { members, loading, filtered }, getMembers }) => {
 
     return (
         <div className="content">
+            <h1>Members</h1>
             <MemberFilter />
 
             <table className="striped highlight centered responsive-table">

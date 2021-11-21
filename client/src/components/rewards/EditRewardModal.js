@@ -56,7 +56,7 @@ const EditRewardModal = ({ current, updateReward }) => {
 
 const modalStyle = {
     width: '50%',
-    height: '75%'
+    height: '25%'
 
 }
 

@@ -12,6 +12,7 @@ const Rewards = ({ reward: { rewards, loading, filtered }, getRewards }) => {
 
     return (
         <div className="content">
+            <h1>Rewards</h1>
             <RewardFilter />
 
             <table className="striped highlight centered responsive-table">

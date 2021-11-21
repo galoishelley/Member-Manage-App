@@ -6,9 +6,6 @@ export const deleteReward = (id) => async dispatch => {
     try {
         setLoading();
 
-        console.log("id");
-        console.log(id);
-
         await axios.delete(`/api/rewards/${id}`);
 
         dispatch({

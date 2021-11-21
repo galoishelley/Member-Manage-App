@@ -83,6 +83,6 @@ npm install --save-dev style-loader css-loader
 ## redux
 npm i redux react-redux redux-thunk redux-devtools-extension
 ## kill-port
-npm install --save kill-port
+npm install --global kill-port
 ## uuidv4
 npm install uuidv4

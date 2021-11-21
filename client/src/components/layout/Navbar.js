@@ -7,9 +7,9 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
 
   const guestLinks = (
     <Fragment>
-      <li>
+      {/* <li>
         <Link to="#">Register</Link>
-      </li>
+      </li> */}
       <li>
         <Link to="/login">Login</Link>
       </li>
@@ -35,7 +35,6 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
       <li>
         <a onClick={() => { logout() }} href="#!">
           <i className="material-icons">exit_to_app</i>
-
         </a>
       </li>
     </Fragment >

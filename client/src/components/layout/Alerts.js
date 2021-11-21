@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 
 const Alerts = ({ alerts }) => {
 
-    console.log("alerts");
-
-    console.log(alerts);
-
     return (
 
         alerts.length > 0 &&

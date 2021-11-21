@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteReward, setCurrent } from '../../actions/rewardAction.js';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import PropTypes from 'prop-types';
 
 const RewardItem = ({ reward, deleteReward, setCurrent }) => {

@@ -1,16 +1,11 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const RewardSchema = Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        ref: 'mbreward'
-    },
+const RewardSchema = new Schema({
     name: {
         type: String,
         required: true
     }
-});
+}, { collection: 'rewards' });
 
-var Reward = mongoose.model('reward', RewardSchema);
-module.exports = Reward;
+const Reward = module.exports = mongoose.model('reward', RewardSchema);
