@@ -1,14 +1,12 @@
-## create package.json
-npm init -y
-## install
-Npm i express bcryptjs jsonwebtoken config express-validator mongoose
-Npm i -D nodemon concurrently 
+## install dependencies
+npm install
+
+## run font_end and back_end
+## font_end port 3000
+## back_end port 5000
+npm run dev
 
 
-##
-git init
-git add .
-git commit -m 'express set up with inital routes'
 
-## https://express-validator.github.io/docs/
+
 
