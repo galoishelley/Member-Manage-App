@@ -5,6 +5,9 @@ import { logout } from '../../actions/authActions.js';
 
 const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
 
+  const logOut = () => {
+    logout()
+  }
   const guestLinks = (
     <Fragment>
       {/* <li>
@@ -33,7 +36,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
 
       <li><strong>Hello {user && user.email}</strong></li>
       <li>
-        <a onClick={() => { logout() }} href="#!">
+        <a onClick={logOut} href="#!">
           <i className="material-icons">exit_to_app</i>
         </a>
       </li>

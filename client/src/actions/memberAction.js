@@ -1,4 +1,4 @@
-import { DELETE_MEMBER, ADD_MEMBER, GET_MEMBERS, UPDATE_MEMBER, MEMBER_ERROR, SET_LOADING, SET_CURRENT, CLEAR_CURRENT, FILTER_MEMBERS, CLEAR_FILTER } from './types';
+import { DELETE_MEMBER, ADD_MEMBER, CLEAR_ERRORS, GET_MEMBERS, UPDATE_MEMBER, MEMBER_ERROR, SET_LOADING, SET_CURRENT, CLEAR_CURRENT, FILTER_MEMBERS, CLEAR_FILTER } from './types';
 import axios from 'axios';
 
 //delete member from server
@@ -6,13 +6,44 @@ export const deleteMember = (id) => async dispatch => {
     try {
         setLoading();
 
-        await axios.delete(`/api/members/${id}`);
+        const res = await axios.get(`/api/members/${id}`);
 
-        dispatch({
-            type: DELETE_MEMBER,
-            payload: id
-        });
+        if (res.data.reward_id === null) {
+            await axios.delete(`/api/members/${id}`);
 
+            dispatch({
+                type: DELETE_MEMBER,
+                payload: id
+            });
+
+        } else {
+            const msg = "Can Not Delete";
+            dispatch({
+                type: MEMBER_ERROR,
+                payload: msg
+            });
+        }
+
+    } catch (err) {
+        // dispatch({
+        //     type: MEMBER_ERROR,
+        //     payload: err.response.statusText
+        // });
+
+    }
+
+}
+
+//check member 's reward is exit
+export const checkMemberReward = (id) => async dispatch => {
+    try {
+        setLoading();
+
+        const res = await axios.get(`/api/members/${id}`);
+
+        // if (res.data.reward_id !== null) {
+
+        // }
     } catch (err) {
         dispatch({
             type: MEMBER_ERROR,
@@ -22,6 +53,8 @@ export const deleteMember = (id) => async dispatch => {
     }
 
 }
+
+
 
 //add new member
 export const addMember = member => async dispatch => {
@@ -139,3 +172,8 @@ export const clearFilter = () => {
     return ({ type: CLEAR_FILTER });
 };
 
+
+//Clear Error
+export const clearErrors = () => {
+    return ({ type: CLEAR_ERRORS });
+};

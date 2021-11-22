@@ -36,7 +36,6 @@ export const getMbMembers_hasnull = () => async dispatch => {
 
         const res = await axios.get("/api/memb_null");
 
-
         dispatch({
             type: GET_MBMEMBERS,
             payload: res.data

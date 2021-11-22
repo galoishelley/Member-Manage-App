@@ -25,6 +25,22 @@ router.get('/', auth,
     });
 
 
+//@route GET api/members:id
+//@desc get all members
+//@access Private
+
+router.get('/:id', auth,
+    async (req, res) => {
+        try {
+            let member = await Member.findById(req.params.id);
+            res.json(member);
+        } catch (err) {
+            console.log(err.message);
+            res.status(500).send("Server Error");
+        }
+    });
+
+
 //@route POST api/members
 //@desc add a new members
 //@access Private

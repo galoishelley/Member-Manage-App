@@ -6,12 +6,35 @@ export const deleteReward = (id) => async dispatch => {
     try {
         setLoading();
 
-        await axios.delete(`/api/rewards/${id}`);
 
-        dispatch({
-            type: DELETE_REWARD,
-            payload: id
-        });
+        const res = await axios.get(`/api/memb_null/${id}`);
+
+
+        console.log("id");
+
+        console.log(res.data);
+
+        if (res.data.length === 0) {
+
+            await axios.delete(`/api/rewards/${id}`);
+
+            dispatch({
+                type: DELETE_REWARD,
+                payload: id
+            });
+        } else {
+            const msg = "Can not delete";
+
+            dispatch({
+                type: REWARD_ERROR,
+                payload: msg
+            });
+
+            console.log("Can Not Delete");
+        }
+
+
+
 
     } catch (err) {
         dispatch({

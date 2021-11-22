@@ -23,10 +23,10 @@ body {
   color: #333;
 }
 
-a {
+/* a {
   color: var(--primary-color);
   text-decoration: none;
-}
+} */
 
 /* a:hover {
   color: #666;
@@ -482,4 +482,8 @@ nav .nav-wrapper {
 
 table.highlight>tbody>tr:hover {
   background-color: #bebfc0 !important;
+}
+
+.modal-footer btn {
+  background-color: blue;
 }

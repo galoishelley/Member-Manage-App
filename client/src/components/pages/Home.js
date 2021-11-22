@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { loadUser } from '../../actions/authActions.js';
-import MbReward from '../mbreward/MbReward.js';
+import About from '../pages/About.js';
 
 const Home = ({ loadUser }) => {
 
@@ -11,7 +11,7 @@ const Home = ({ loadUser }) => {
     }, [])
 
     return (
-        <MbReward />
+        <About />
     )
 }
 

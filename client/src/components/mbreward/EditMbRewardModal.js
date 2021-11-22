@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DropItem from './DropItem.js';
 
+import { getRewards } from '../../actions/rewardAction.js';
 import { updateMember } from '../../actions/memberAction.js';
 import { addMbReward } from '../../actions/mbrewardAction.js';
 
-const EditMbRewardModal = ({ current, updateMember, reward: { rewards }, mbreward: { mbmembers, loading }, addMbReward }) => {
+const EditMbRewardModal = ({ current, updateMember, reward: { rewards }, mbreward: { mbmembers, loading }, addMbReward, getRewards }) => {
 
     const [_id, set_id] = useState('');
     const [reward_id, setReward_id] = useState('');
@@ -17,6 +18,7 @@ const EditMbRewardModal = ({ current, updateMember, reward: { rewards }, mbrewar
             set_id(current._id);
             setReward_id(current.reward_id);
         }
+        getRewards();
     }, [current]);
 
 
@@ -102,4 +104,4 @@ const mapStateToProps = state => ({
     mbreward: state.mbreward,
 });
 
-export default connect(mapStateToProps, { updateMember, addMbReward })(EditMbRewardModal);
+export default connect(mapStateToProps, { updateMember, addMbReward, getRewards })(EditMbRewardModal);

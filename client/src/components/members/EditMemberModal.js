@@ -45,7 +45,7 @@ const EditMemberModal = ({ current, updateMember }) => {
     return (
         <div id='edit-member-modal' className='modal' style={modalStyle}>
             <div className="modal-content">
-                <h4>Enter Member Info</h4>
+                <h4>Edit Member Info</h4>
                 <div className="row">
                     <div className="input-field">
                         <input type="text" name='name' value={name} onChange={e => setName(e.target.value)} />

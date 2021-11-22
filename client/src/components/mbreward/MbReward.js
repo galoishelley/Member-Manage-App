@@ -4,6 +4,7 @@ import MbRewardItem from './MbRewardItem.js';
 import { connect } from 'react-redux';
 import { getMBHasReward } from '../../actions/mbrewardAction.js';
 import { getMbMembers_aggregate } from '../../actions/mbrewardAction.js';
+import { loadUser } from '../../actions/authActions.js';
 
 
 const MbReward = ({ member: { members }, mbreward: { mbrewards, loading, filtered }, getMBHasReward, getMbMembers_aggregate }) => {
@@ -11,8 +12,9 @@ const MbReward = ({ member: { members }, mbreward: { mbrewards, loading, filtere
     useEffect(() => {
         // getMBHasReward();
         //has reward members
+        // loadUser();
         getMbMembers_aggregate();
-    }, [members]);
+    }, [mbrewards]);
 
     return (
         <div className="content">

@@ -1,4 +1,4 @@
-import { GET_MEMBERS, UPDATE_MEMBER, DELETE_MEMBER, SET_LOADING, SET_CURRENT, MEMBER_ERROR, ADD_MEMBER, FILTER_MEMBERS, CLEAR_FILTER, CLEAR_CURRENT } from '../actions/types.js';
+import { GET_MEMBERS, UPDATE_MEMBER, DELETE_MEMBER, SET_LOADING, SET_CURRENT, CLEAR_ERRORS, MEMBER_ERROR, ADD_MEMBER, FILTER_MEMBERS, CLEAR_FILTER, CLEAR_CURRENT } from '../actions/types.js';
 
 const initialState = {
     members: [],
@@ -33,11 +33,6 @@ const memberReducer = (state = initialState, action) => {
                 ...state,
                 members: state.members.map(member => member._id === action.payload._id ? action.payload : member)
             }
-        // case SEARCH_LOGS:
-        //     return{
-        //         ...state,
-        //         logs: action.payload
-        //     }
         case SET_CURRENT:
             return {
                 ...state,
@@ -71,6 +66,11 @@ const memberReducer = (state = initialState, action) => {
                 ...state,
                 filtered: null
             };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
         default:
             return state;
     }

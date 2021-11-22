@@ -2,12 +2,20 @@ import React, { useEffect } from 'react'
 import MemberFilter from './MemberFilter.js';
 import MemberItem from './MemberItem.js';
 import { connect } from 'react-redux';
-import { getMembers } from '../../actions/memberAction.js';
+import { getMembers, clearErrors } from '../../actions/memberAction.js';
+import { setAlert } from '../../actions/alertActions.js';
 
-const Members = ({ member: { members, loading, filtered }, getMembers }) => {
+const Members = ({ member: { members, error, loading, filtered }, getMembers, clearErrors, setAlert }) => {
 
     useEffect(() => {
+
         getMembers();
+        clearErrors();
+
+        // if (error === "Can Not Delete") {
+        //     setAlert(error, 'danger');
+        //     clearErrors();
+        // }
     }, [])
 
     return (
@@ -30,11 +38,11 @@ const Members = ({ member: { members, loading, filtered }, getMembers }) => {
                         filtered !== null
                         ?
                         filtered.map(member => (
-                            <MemberItem member={member} key={member._id} />
+                            <MemberItem member={member} key={member._id} error={error} />
                         ))
 
                         : members.map(member => (
-                            <MemberItem member={member} key={member._id} />
+                            <MemberItem member={member} key={member._id} error={error} />
                         ))
                     }
                 </tbody>
@@ -54,4 +62,4 @@ const mapStateToProps = state => ({
     member: state.member
 });
 
-export default connect(mapStateToProps, { getMembers })(Members);
+export default connect(mapStateToProps, { getMembers, clearErrors, setAlert })(Members);

@@ -72,7 +72,7 @@ function App() {
               <PrivateRoute exact path='/reward' component={Rewards} />
               <PrivateRoute exact path='/about' component={About} />
               <Route exact path='/login' component={Login} />
-              <Route exact path='/mbreward' component={MbReward} />
+              <PrivateRoute exact path='/mbreward' component={MbReward} />
             </Switch>
           </div>
         </Fragment>
